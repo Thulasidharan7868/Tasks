@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding:0px;
+            box-sizing: border-box;
+        }
+        .main{
+            width:100%;
+            height:100vh;
+            background-color: rgba(25, 161, 173);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner{
+            width:330px;
+            height:400px;
+            /* background-color: red; */
+            border-radius: 5px;
+        }
+        .head{
+            width:100%;
+            height:30%;
+            background-color:rgba(65, 204, 211);
+            border-top-left-radius: 5px;
+            border-top-right-radius:5px ;
+        }
+        .mid{
+            width:100%;
+            height:50%;
+            background-color: whitesmoke;
+            position: relative;
+            
+        }
+        .foot{
+            width:100%;
+            height:20%;
+            background-color: whitesmoke;
+            border-top: 1px solid grey;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius:5px ;
+            position: relative;
+        }
+        .image{
+            width:120px;
+            height: 120px;
+            position: absolute;
+            left:33%;
+            top:-25%;
+            border-radius: 50%;
+            border: 5px solid whitesmoke;
+        }
+        .para1{
+            /* background-color: aquamarine; */
+            position: absolute;
+            top:100px;
+            left:27%;
+            font-size: 25px;
+            letter-spacing:2px;
+
+        }
+        .para2{
+            position: absolute;
+            /* background-color: rgb(127, 229, 255); */
+            top:150px;
+            left:45%;
+            font-size:20px;
+            letter-spacing:1px;
+        }
+        .t1{
+            width:33.3%;
+            height:100%;
+            /* background-color: rgb(65, 204, 211); */
+            
+
+            
+
+        }
+        .t2{
+            width:33.3%;
+            height:100%;
+            /*background-color: rgb(87, 65, 211);*/
+            
+            
+        }
+        .t3{
+            width:33.3%;
+            height:100%;
+            /*background-color: rgb(65, 211, 77);*/
+            
+            
+        }
+        .p1{
+            position: absolute;
+            top:20px;
+            left:10%;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+        
+        .p2{
+            position: absolute;
+            top:45px;
+            left:7%;
+            font-size: 15px;
+        }.p3{
+            position: absolute;
+            top: 20px;
+            left:42%;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+        .p4{
+            position: absolute;
+            top:45px;
+            left:44%;
+            font-size: 15px;
+        }.p5{
+            position: absolute;
+            top:20px;
+            left:75%;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+        .p6{
+            position: absolute;
+            top:45px;
+            left:75%;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="inner">
+            <div class="sub head"></div>
+            <div class="sub mid">
+                <img src="./vijay.jpeg" alt="" class = "image">
+                <p class = "para1">Actor vijay 50</p>
+                <p class = "para2">India</p>
+            </div>
+            <div class="sub foot">
+                <div class="t1">
+                    <p class="p1">80K</p>
+                    <p class="p2">Followers</p>
+                </div>
+                <div class="t2">
+                    <p class="p3">803K</p>
+                    <p class="p4">Likes</p>
+                </div>
+                <div class="t3">
+                    <p class="p5">1.4K</p>
+                    <p class="p6">Photos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
