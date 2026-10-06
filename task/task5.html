@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .con{
+            background-color: orange;
+            width:1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: red;
+            width: 250px;
+            height: 300px;
+            border: 2px solid black;
+        }
+
+        .img {
+            width: 100%;
+            height: 75%;
+            background-color: yellow;
+        }
+
+        .content {
+            width: 100%;
+            height: 25%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Javasript</h1>
+    <div class="con" id="con">
+                
+    </div>
+    <script>
+        let final = ''
+        let image =[ "./image/img1.jpeg", "./image/img2.jpeg", "./image/img3.jpeg", "./image/img4.jpeg", "./image/img5.jpeg", "./image/img6.jpeg", "./image/img7.jpeg", "./image/img8.jpeg", "./image/img9.jpeg", "./image/img10.jpeg"]
+        let desc =["New beginnings and fresh opportunities.Every day brings a chance to start again." ,"A peaceful place to live and grow.Home is where comfort and memories begin." ,
+        "Challenges make us stronger.Keep moving toward greater heights" , 
+        "Simple moments can bring great happiness.Love and loyalty make life brighter.", 
+        "Knowledge opens the door to possibilities.Learning helps build a better future." ,
+         "Nature creates a sense of peace.Take time to relax and enjoy the moment."
+        , "Friendship is a treasure to cherish.Laughter and support make life richer." ,
+        "Creativity sparks innovation and growth.Imagination fuels progress and change." ,
+    "Every city is full of opportunities.Dream big and create your own path.",
+    "Family is the heart of every home.Love and care make life meaningful."]
+        for (let i = 0; i < image.length; ++i) {
+            text = `
+            <div class="card">
+                <div class="img">
+                    <img src="${image[i]}" alt="" style="width:100%;height: 100%;">
+                </div>
+                <div class="content">${desc[i]}</div>
+          </div>
+              ` ;
+
+            final += text;
+
+        }
+        document.getElementById("con").innerHTML = final;
+
+
+    </script>
+
+</body>
+
+</html>
