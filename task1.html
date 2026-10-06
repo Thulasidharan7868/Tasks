@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            /*background-color: red;*/
+            background: linear-gradient(to right bottom, rgb(30, 40, 54), rgb(81, 145, 117));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            width: 400px;
+            height: 600px;
+            /*background-color: green;*/
+            margin: auto;
+            background: linear-gradient(rgba(0, 34, 80), rgba(9, 97, 59));
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+
+
+        }
+
+        .sec {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 35px auto;
+
+        }
+
+        .image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: block;
+            margin: 50px auto 10px;
+
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 300px;
+            height: 25px;
+            border-radius: 20px;
+            border: none;
+            margin-bottom: 7px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn {
+            width: 300px;
+            height: 25px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        p {
+            text-align: center;
+            font-size: 20px;
+            color: white;
+        }
+
+        span {
+            color: rgb(226, 24, 24);
+            font-size: 20px;
+            margin-left: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <span id="spn" onclick="document.getElementById('Form').style.display = 'none'"><i class="fa-solid fa-x"></i></span>
+
+    <div class="container" id="Form">
+        <div class="form main">
+            <img src="./Thulasi.jpeg" alt="" class="image">
+            <p>On-Site Enquiries Form</p>
+            <div class="form sec" >
+                <form action="">
+                    
+                    <label for="name" >Name</label>                    
+                    <input type="text" id="name" required><br>
+                    <label for="age" >Age</label>                    
+                    <input type="number" id="age" required><br>
+                    <label for="gender" >Gender</label>                    
+                    <input type="text" id="gender" required><br>
+                    <button class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        
+            let name = prompt("Enter your name:");
+            let age = prompt("Enter your age:");
+            let gender = prompt("Enter your gender:");
+
+            Name=document.getElementById("name").value ;
+            Age=document.getElementById("age").value ;
+            Gender =document.getElementById("gender").value ;
+
+            Name.value=name;
+            Age.value = age;
+            Name.value=gender;
+    </script>
+</body>
+
+</html>

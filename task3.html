@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Marks Calculator</title>
+</head>
+
+<body>
+
+    <h2>Marks Calculator</h2>
+
+    Tamil : <input type="number" id="mark1" ><br>
+    English : <input type="number" id="mark2" ><br>
+    Mathematics : <input type="number" id="mark3" ><br>
+    Science : <input type="number" id="mark4" ><br>
+    Social : <input type="number" id="mark5" >
+
+
+    <br><br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    
+
+
+    <script>
+        function calculate() {
+
+            let m1 = Number(document.getElementById("mark1").value);
+            let m2 = Number(document.getElementById("mark2").value);
+            let m3 = Number(document.getElementById("mark3").value);
+            let m4 = Number(document.getElementById("mark4").value);
+            let m5 = Number(document.getElementById("mark5").value);
+
+            let total = m1 + m2 + m3 + m4 + m5;
+
+            let average = total / 5;
+
+            let percentage = (total / 500) * 100;
+
+            console.log("Total Marks: " + total)
+            console.log("Average: " + average)
+            console.log("Percentage: " + percentage + "%")
+
+
+            if (average >= 90 && average <= 100) {
+                console.log("Grade A+");
+            }
+            else if (average >= 80 && average < 90) {
+                console.log("Grade A");
+            }
+            else if (average >= 70 && average < 80) {
+                console.log("Grade B");
+            }
+            else if (average >= 60 && average < 70) {
+                console.log("Grade C");
+            }
+            else if (average >= 50 && average < 60) {
+                console.log("Grade D");
+            }
+            else {
+                console.log("Fail");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
