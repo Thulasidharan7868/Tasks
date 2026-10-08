@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fan Rotation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .con {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #ccc;
+        }
+
+        .up,
+        .down {
+            width: 220px;
+            height: 120px;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            width: 70px;
+            height: 40px;
+            margin: 10px;
+
+            background-color: #17466b;
+            color: white;
+
+            border: none;
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d3552;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="con">
+
+
+        <div class="up">
+
+            <div class="box">
+                <img id="fan1" src="./image/fan.jpg">
+            </div>
+
+            <div class="box">
+                <img id="fan2" src="./image/fan.jpg">
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <button onclick="up()">up</button>
+
+            <button onclick="down()">down</button>
+
+            <button onclick="left()">left</button>
+
+            <button onclick="right()">right</button>
+
+            <button onclick="stopFan()">stop</button>
+
+        </div>
+
+
+        <div class="down">
+
+            <div class="box">
+                <img id="fan3" src="./image/fan.jpg">
+            </div>
+
+            <div class="box">
+                <img id="fan4" src="./image/fan.jpg">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function stopFan() {
+
+            document.getElementById("fan1").style.animation = "none";
+            document.getElementById("fan2").style.animation = "none";
+            document.getElementById("fan3").style.animation = "none";
+            document.getElementById("fan4").style.animation = "none";
+
+        }
+        function up() {
+
+            stopFan();
+
+            document.getElementById("fan1").style.animation = "rotate 1s linear infinite";
+            document.getElementById("fan2").style.animation = "rotate 1s linear infinite";
+
+        }
+
+
+        function down() {
+
+            stopFan();
+
+            document.getElementById("fan3").style.animation = "rotate 1s linear infinite";
+            document.getElementById("fan4").style.animation = "rotate 1s linear infinite";
+
+        }
+
+
+
+        function left() {
+
+            stopFan();
+
+            document.getElementById("fan1").style.animation = "rotate 1s linear infinite";
+            document.getElementById("fan3").style.animation = "rotate 1s linear infinite";
+
+        }
+
+
+
+        function right() {
+
+            stopFan();
+
+            document.getElementById("fan2").style.animation = "rotate 1s linear infinite";
+            document.getElementById("fan4").style.animation = "rotate 1s linear infinite";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

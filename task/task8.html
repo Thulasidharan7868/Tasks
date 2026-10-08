@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .form {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ccc;
+        }
+
+        form {
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <form action="">
+            <label for="name">Name : </label>
+            <input type="text" name="name" id="name"><br><br>
+            <label for="email">Email : </label>
+            <input type="email" name="email" id="email"><br><br>
+            <label for="age">Age : </label>
+            <input type="number" name="age" id="age"><br><br>
+            <button type="button" onclick="login()">Submit</button>
+        </form>
+    </div>
+    <script>
+        let Email = document.getElementById("email").value;
+        let Age = document.getElementById("age").value;
+        const users = ["raja", "ravi", "jaya"]
+        function login() {
+            let Name = document.getElementById("name").value;
+            user = false;
+            for (let i = 0; i < users.length; ++i) {
+                if (Name == users[i]) {
+                    user = true;
+                };
+            }
+
+            if (user) {
+                console.log("login successfully");
+            }
+            else {
+                console.log("login failture");
+            }
+
+        }
+
+        //   login(Name);
+    </script>
+</body>
+
+</html>
