@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: wheat;
+        }
+
+        .con {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 18px;
+        }
+
+        .con1 {
+            width: 60%;
+        }
+
+        .welcome {
+            display: inline-block;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            background: rgba(219, 234, 254, 1);
+            color: rgba(8, 102, 245, 1);
+            font-size: 16px;
+        }
+
+        h3 {
+            font-size: 40px;
+            line-height: 1.15;
+            margin-bottom: 5px;
+        }
+
+        .des {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .btnn {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .btn1 {
+            background: rgba(8, 102, 245, 1);
+            color: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(8, 102, 245, 1);
+        }
+
+        .btn2 {
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(8, 102, 245, 1);
+            color: rgba(8, 102, 245, 1);
+        }
+
+        .inner-con {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .inner-con-c {
+            width: 33.33%;
+            text-align: center;
+            padding: 0 10px;
+            border-right: 1px solid rgba(203, 213, 225, 1);
+        }
+
+
+        .inner-con-c h2 {
+            font-size: 28px;
+            color: rgba(8, 102, 245, 1);
+            margin-bottom: 5px;
+        }
+
+        .inner-con-c p {
+            font-size: 14px;
+        }
+
+        .con2 {
+            width: 40%;
+        }
+
+        .con2 img {
+            display: block;
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        @media screen and (max-width: 991px) and (min-width:768px){
+            .con {
+                width: 90%;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .con1,
+            .con2 {
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 36px;
+            }
+
+            .con2 img {
+                height: 220px;
+            }
+
+            .btnn {
+                margin-bottom: 25px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .con {
+                width: 95%;
+                /* background-color: blanchedalmond; */
+                padding: 20px;
+                margin: 25px auto;
+                flex-direction: column;
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+
+            .welcome {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .des {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .btnn {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .inner-con-c {
+                padding: 0 5px;
+            }
+
+            .inner-con-c h2 {
+                font-size: 22px;
+            }
+
+            .inner-con-c p {
+                font-size: 12px;
+            }
+
+            .con2 img {
+                width: 90%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="con1">
+            <p class="welcome">Welcome to EduTech</p>
+            <h3>Learn Today</h3>
+            <h3>Build Tomorrow </h3>
+            <p class="des">Join thousands of students and develop real- world skills with expert-led courses</p>
+            <div class="btnn">
+                <button class="btn btn1"><b>Get Started </b><i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn btn2"><i class="fa-regular fa-circle-play"></i><b> Watch Video</b></button>
+            </div>
+            <div class="inner-con">
+                <div class="inner-con-c">
+                    <h2>10K+</h2>
+                    <p>Students</p>
+                </div>
+                <div class="inner-con-c">
+                    <h2>50+</h2>
+                    <p>Coures</p>
+                </div>
+                <div class="inner-con-c">
+                    <h2>95%</h2>
+                    <p>Sucess Rate</p>
+                </div>
+            </div>
+        </div>
+        <div class="con2">
+            <img src="./image/desktop.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
