@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        header {
+            width: 100%;
+            height: 15vh;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header h4 {
+            margin-bottom: 5px;
+            font-size: 28px;
+            color: white;
+        }
+
+        .personal-title {
+            background-color: rgb(105, 105, 165);
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        .field {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            width: 100%;
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background: rgba(96, 165, 250, 0.38);
+        }
+
+        footer button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            width: 200px;
+            height: 75px;
+            font-size: 18px;
+        }
+        .submit{
+            background-color: rgb(57, 57, 219);
+            color: white;
+        }
+        .reset{
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h4><i class="fa-solid fa-graduation-cap"></i>  Student Registration Form</h4>
+        <p>Fill in the details below to complete registration</p>
+    </header>
+    <form action="" class="regform">
+        <div class="form-data">
+            <section class="section personal">
+                <p class="personal-title"><i class="fa-solid fa-user"></i>1.Personal Details</p>
+                <div class="field">
+                    <label for="name">Full Name</label><br>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                    <label for="dob">Date of Birth</label><br>
+                    <input type="text" placeholder="dd-mm-yyyy">
+                    <label for="gender">Gender</label><br>
+                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                    <label for="father">Father's Name</label><br>
+                    <input type="text" id="father" placeholder="Enter father's name">
+                    <label for="mother">Mother's Name</label><br>
+                    <input type="text" id="mother" placeholder="Enter mother's name">
+                    <label for="bloodGroup">Blood Group</label><br>
+                    <select id="bloodGroup" name="bloodGroup">
+                        <option value="">-- Select Blood Group --</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
+                </div>
+            </section>
+            <section class="section Contact">
+                <p class="contact-title"><i class="fa-solid fa-user"></i>1.Contact Details</p>
+                <div class="field">
+                    <label for="email">Email ID</label><br>
+                    <input type="email" id="email" placeholder="example@gmail.com">
+                    <label for="mobile">Mobile Number</label><br>
+                    <input type="number" placeholder="9876543210">
+                    <label for="address">Address</label><br>
+                    <input type="text" placeholder="Enter your full address">
+                </div>
+            </section>
+            <section class="section course">
+                <p class="course-title"><i class="fa-solid fa-user"></i>1.Course Details</p>
+                <div class="field">
+                    <label for="course">Select Course</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Select Course --</option>
+                        <option>B.E. Computer Science</option>
+                        <option>B.E. Electronics and Communication</option>
+                        <option>B.E. Electrical and Electronics</option>
+                        <option>B.E. Mechanical Engineering</option>
+                        <option>B.Tech Information Technology</option>
+                        <option>B.Tech Artificial Intelligence</option>
+                        <option>MCA</option>
+                        <option>MBA</option>
+                        <option>Java Full Stack Development</option>
+                        <option>Python Full Stack Development</option>
+                    </select>
+                    <label>Preferred Batch </label>
+                    <label><input type="radio" name="batch" value="Morning" required> Morning</label>
+                    <label><input type="radio" name="batch" value="Afternoon"> Afternoon</label>
+                    <label><input type="radio" name="batch" value="Evening"> Evening</label>
+                    <label>Mode of Learning</label>
+                    <label><input type="checkbox" name="learning" value="Online"> Online</label>
+                    <label><input type="checkbox" name="learning" value="Offline"> Offline</label>
+                    <label><input type="checkbox" name="learning" value="Hybrid"> Hybrid</label>
+                </div>
+            </section>
+            <section class="section education">
+                <p class="education-title"><i class="fa-solid fa-user"></i>1.Education Details</p>
+                <div class="field">
+                    <label for="qualification">Highest Qualification </label>
+                    <select id="qualification" name="qualification" required>
+                        <option value="">-- Select --</option>
+                        <option>10th Standard</option>
+                        <option>12th Standard</option>
+                        <option>Diploma</option>
+                        <option>UG Degree</option>
+                        <option>PG Degree</option>
+                        <option>Other</option>
+                    </select>
+                    <label for="passingYear">Year of Passing </label>
+                    <input type="number" id="passingYear" name="passingYear" placeholder="e.g. 2026" min="1950"
+                        max="2100" required>
+                    <label for="percentage">Percentage / CGPA </label>
+                    <input type="number" id="percentage" name="percentage" placeholder="e.g. 85" min="0" max="100"
+                        step="0.01" required>
+                    <label for="college">School / College Name </label>
+                    <input id="college" name="college" placeholder="Enter institution name" required>
+                </div>
+            </section>
+            <section class="section skill">
+                <p class="skill-title"><i class="fa-solid fa-user"></i>1.Skills & Intrests</p>
+                <div class="field">
+                    <label>Technical Skills (Select all that apply)</label>
+                    <label><input type="checkbox" name="skills" value="C"> C</label>
+                    <label><input type="checkbox" name="skills" value="C++"> C++</label>
+                    <label><input type="checkbox" name="skills" value="Java"> Java</label>
+                    <label><input type="checkbox" name="skills" value="Python"> Python</label>
+                    <label><input type="checkbox" name="skills" value="Web Development"> Web Development</label>
+                    <label><input type="checkbox" name="skills" value="Data Science"> Data Science</label>
+                    <label><input type="checkbox" name="skills" value="IoT"> IoT</label>
+                    <label><input type="checkbox" name="skills" value="AI"> AI</label>
+                    <label><input type="checkbox" name="skills" value="Others"> Others</label>
+                </div>
+            </section>
+            <section class="section information">
+                <p class="information-title"><i class="fa-solid fa-user"></i>1.Additional information</p>
+                <div class="field">
+                    <label for="photo">Upload Photo</label>
+                    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png" required>
+                    <span class="hint">(JPG, PNG - Max 2MB)</span>
+                    <label for="resume">Upload Resume</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf">
+                    <span class="hint">(PDF - Max 2MB)</span>
+                    <label for="message">Any Message</label>
+                    <input id="message" name="message" placeholder="Enter your message here (optional)"></input>
+                </div>
+            </section>
+            <section class="section conditions">
+                <p class="information-title"><i class="fa-solid fa-user"></i>1.Terms & Conditions</p>
+                <div class="field">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">I agree to the terms and conditions and confirm that all the information provided
+                        is correct.</label>
+                    <br><a href="" id="termsLink">Read Terms & Conditions</a>
+                </div>
+            </section>
+            <footer>
+                <button class="submit"> <i class="fa-solid fa-paper-plane"></i>Submit Form</button>
+                <button class="reset"><i class="fa-solid fa-rotate"></i>Reset Form</button>
+            </footer>
+
+        </div>
+    </form>
+</body>
+
+</html>
