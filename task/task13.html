@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aqua;
+        }
+
+        #output {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .report-table th,
+        .report-table td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .report-table th {
+            background-color: #ddd;
+        }
+
+        .report-table td[rowspan] {
+            vertical-align: middle;
+        }
+
+        .report-table th[colspan] {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script>
+        let output = document.getElementById("output")
+        const employees = [
+            { id: 101, name: "Arun", department: "IT", salary: 75000, performance: 92, experience: 6, active: true, skills: ["JavaScript", "React"] },
+            { id: 102, name: "Priya", department: "HR", salary: 48000, performance: 85, experience: 4, active: true, skills: ["Excel", "Recruitment"] },
+            { id: 103, name: "Karthik", department: "IT", salary: 95000, performance: 96, experience: 8, active: true, skills: ["Java", "Spring"] },
+            { id: 104, name: "Divya", department: "Finance", salary: 65000, performance: 78, experience: 5, active: true, skills: ["Excel", "SQL"] },
+            { id: 105, name: "Vijay", department: "IT", salary: 55000, performance: 68, experience: 2, active: true, skills: ["JavaScript", "HTML"] },
+            { id: 106, name: "Meena", department: "Finance", salary: 82000, performance: 91, experience: 7, active: true, skills: ["SQL", "Python"] },
+            { id: 107, name: "Suresh", department: "HR", salary: 42000, performance: 62, experience: 3, active: false, skills: ["Recruitment"] },
+            { id: 108, name: "Nithya", department: "IT", salary: 88000, performance: 89, experience: 5, active: true, skills: ["React", "Node.js"] },
+            { id: 109, name: "Praveen", department: "Sales", salary: 60000, performance: 75, experience: 4, active: true, skills: ["Communication", "CRM"] },
+            { id: 110, name: "Lakshmi", department: "Sales", salary: 72000, performance: 94, experience: 6, active: true, skills: ["CRM", "Analytics"] },
+            { id: 111, name: "Manoj", department: "Finance", salary: 50000, performance: 55, experience: 1, active: false, skills: ["Excel"] },
+            { id: 112, name: "Anitha", department: "IT", salary: 105000, performance: 98, experience: 10, active: true, skills: ["Java", "AWS", "SQL"] }
+        ];
+        let find_id = employees.find((val, ind, arr) => val.id == 108)
+        // console.log(find_id)
+        let highest_paid = employees.map((val, ind, arr) => val.salary).sort((a, b) => b - a)[0]
+        let highest_paid_emp = employees.find((val, ind, arr) => val.salary == highest_paid)
+        // console.log(highest_paid_emp)
+        let aws_skill = employees.filter((val, ind, arr) => val.skills.includes("AWS"))
+        // console.log(aws_skill)
+        let react_skill = employees.filter((val, ind, arr) => val.skills.includes("React")).map((val) => {
+            return { ...val, "React-position": val.skills.indexOf("React") }
+        })
+        // console.log(react_skill)
+        let per_low = employees.some((val, ind, arr) => val.performance <= 60)
+        // console.log(per_low)
+        let perform = employees.every((val, ind, arr) => val.active == true && val.performance >= 70)
+        // console.log(perform)
+        let active_emp = employees.filter((val, ind, arr) => val.active)
+        // console.log(active_emp)
+        let it_dept = employees.filter((val, ind, arr) => val.active == true && val.department == "IT")
+        console.log(it_dept)
+        let sal_70k = employees.filter((val, ind, arr) => val.salary >= 70000)
+        // console.log(sal_70k)
+        let perf_90 = employees.filter((val, ind, arr) => val.performance >= 90)
+        // console.log(perf_90)
+        let sort_sal = employees.map((val) => val.salary).sort((a, b) => b - a);
+        // console.log(sort_sal)
+        let top_three = sort_sal.slice(0, 3).map((salary) => employees.find((val) => val.salary == salary));
+        // console.log(top_three);
+        let annual_sal = employees.reduce((total, val) => total + val.salary, 0) * 12
+        // console.log(annual_sal)
+        let empl_sort = employees.map((val, ind, arr) => ({
+            Name: val.name,
+            Experience: val.experience
+        })).sort((a, b) => a - b)
+        // console.log(empl_sort)
+        //         output.innerHTML += `
+        //         <h3>Employee Experience - Ascending Order</h3>
+        //         ${empl_sort.map((val, ind, arr) => `
+        //         Name : ${val.Name}<br>
+        //         Experience: ${val.Experience} years
+        //         <br><br>
+        //     `).join("")}
+        // `
+        let experience_5y = employees.filter((val, ind, arr) => val.active == true && val.experience >= 5 && val.performance >= 85)
+        // console.log(experience_5y)
+        //     output.innerHTML +=`
+        //     <h3>Experience more</h3>
+        //     ${experience_5y.map((val, ind, arr) => `
+        //     Name: ${val.name}<br>
+        //     Department: ${val.department}<br>
+        //     Experience: ${val.experience} years<br>
+        //     Performance: ${val.performance}
+        //     <br><br>
+        // `).join("")}`
+        let total_sal = employees.reduce((total, val) => total + val.salary, 0)
+        // console.log(total_sal)
+        // output.innerHTML +=`
+        // <h3>Total Salary</h3>
+        // Total Salary : ${total_sal}
+        // `
+        let payrol_act = employees.filter((val, ind, arr) => val.active == true).reduce((total, val) => total + val.salary, 0)
+        // console.log(payrol_act)
+        // output.innerHTML +=`
+        // <h3>Active employees of Payroll</h3>
+        // Active employees Salary : ${payrol_act}
+        // `
+        let average_all = employees.reduce((total, val) => total + val.salary, 0) / employees.length
+        // console.log(average_all)
+        // output.innerHTML +=`
+        // <h3>Average Salary of all department</h3>
+        // Average all department Salary : ${average_all}
+        // `
+        let salary_it = employees.filter((val, ind, arr) => val.department == "IT").reduce((tot, val) => tot + val.salary, 0)
+        // console.log(salary_it)
+        // output.innerHTML +=`
+        // <h3>Salary of IT department</h3>
+        // IT department Salary : ${salary_it}
+        // `
+        let perform_count = 0
+        let per_count = employees.filter((val, ind, arr) => {
+            if (val.performance >= 90) perform_count += 1
+        })
+        // console.log(perform_count)
+        // output.innerHTML +=`
+        // <h3>Performance count of sccore above 90</h3>
+        // Annual Salary : ${perform_count}
+        // `
+        let annual_act = employees.filter((val, ind, arr) => val.active == true).reduce((tot, val) => tot + val.salary, 0) * 12
+        // console.log(annual_act)
+        // output.innerHTML +=`
+        // <h3>Annual salary of active employees</h3>
+        // Annual Salary : ${annual_act}
+        // `
+        let bonus_act = employees.filter((val, ind, arr) => val.active == true).map((val, ind, arr) => ({
+            Name: val.name,
+            Bonus: val.salary * 0.10
+        }))
+        // console.log(bonus_act)
+        // output.innerHTML +=`
+        // <h3>Bonus of active  employee</h3>
+        // ${bonus_act.map((val, ind ,arr) =>
+        // `Name : ${val.Name}<br>
+        // Bonus : ${val.Bonus}<br>`).join("")}
+
+        // `
+        let tot_bonus = employees.filter((val, ind, arr) => val.active == true).reduce((tot, val) => tot + (val.salary * 0.10), 0)
+        // console.log(tot_bonus)
+        // output.innerHTML +=`
+        // <h3>Total Bonus</h3>
+        // Total Bonus : ${tot_bonus}
+        // `
+        let new_emp = employees.map((val, ind, arr) => ({
+            Name: val.name,
+            Department: val.department,
+            Salary: val.salary,
+            Performance: val.performance
+        }))
+        // console.log(new_emp)
+        //     output.innerHTML += `
+        //      <h3>Employee Details</h3>
+        //      ${new_emp.map((val, ind, arr) => `
+        //     Name: ${val.Name}<br>
+        //     Department: ${val.Department}<br>
+        //     Salary: ${val.Salary}<br>
+        //     Performance: ${val.Performance}
+        //     <br><br>
+        // `).join("")}`;
+        let perfom_status = employees.map((val, ind, arr) => ({
+            ...val,
+            PerformanceStatus:
+                val.performance >= 90 ? "Excellent" : val.performance >= 75 ? "Good" : val.performance >= 60 ? "Average" : "Needs Improvement"
+        }))
+        // console.log(perfom_status)
+        // output.innerHTML += `
+        //     <h3>Employee Performance Report</h3>
+        //     ${perfom_status.map((val, ind, arr) => `
+        //     Name: ${val.name}<br>
+        //     Department: ${val.department}<br>
+        //     performance : ${val.performance}<br>
+        //     Status : ${val.PerformanceStatus}
+        //     <br><br>`).join("")}`;
+        let bonus_report = employees.map((val, ind, arr) => ({
+            Name: val.name,
+            Department: val.department,
+            Salary: val.salary,
+            FinalSalary: val.salary + val.salary * 0.10
+        }))
+        // console.log(bonus_report)
+        // output.innerHTML += `
+        //     <h3>Employee Bonus Report</h3>
+        //     ${bonus_report.map((val, ind, arr) => `
+        //     Name: ${val.Name}<br>
+        //     Department: ${val.Department}<br>
+        //     Salary: ${val.Salary}<br>
+        //     Final Salary: ${val.FinalSalary}
+        //     <br><br>`).join("")}`;
+        let empl_names = employees.map((val, ind, arr) => val.name.toUpperCase())
+        // console.log(empl_names)
+        // output.innerHTML += `
+        //     <h3>Employee Names</h3>
+        //     ${empl_names.map((val, ind, arr) => `
+        //     ${val}<br><br>
+        //     `).join("")}`;
+
+        let act_emp_report = employees.filter((val, ind, arr) => val.active == true).sort((a, b) => b.salary - a.salary).map((val, ind, arr) => ({
+            Name: val.name,
+            Salary: val.salary,
+        }))
+        // console.log(act_emp_report)
+        //         output.innerHTML += `
+        //             <h3>Active Employee Salary Report</h3>
+        //             ${act_emp_report.map((val, ind, arr) => `
+        //             Name: ${val.Name}<br>
+        //             Salary: ${val.Salary}
+        //             <br><br>
+        //     `).join("")}
+        // `;
+        let emp_count_dept = employees.reduce((count, val) => {
+            if (count[val.department]) {
+                count[val.department] += 1
+            }
+            else {
+                count[val.department] = 1
+            }
+            return count
+        }, {})
+        console.log(emp_count_dept)
+        // let counts = [
+        //     ["IT", it_count],
+        //     ["Finance", finance_count],
+        //     ["HR", hr_count],
+        //     ["Sales", sales_count]
+        // ];
+        // output.innerHTML += `
+        //     <h3>Department wise employee count</h3>
+        //     ${counts.map(val => `
+        //     Department: ${val[0]}<br>
+        //     Employee Count: ${val[1]}
+        //     <br>
+        //     `).join("")}`
+
+        let salary_of_dept = employees.reduce((count, val) => {
+            let dept = count.find((x) => x.department == val.department);
+            if (dept) {
+                dept.salary += val.salary;
+            } else {
+                count.push({
+                    department: val.department,
+                    salary: val.salary
+                });
+            }
+            return count;
+        }, []);
+        // console.log(salary_of_dept);
+
+        let highest_payroll = salary_of_dept
+            .sort((a, b) => b.salary - a.salary)[0];
+        // console.log(highest_payroll);
+        // output.innerHTML += `
+        // <h3> Highest Payroll by department </h3><br>
+        // Department: ${highest_payroll.department}<br>
+        // Payroll: ${highest_payroll.salary}
+        // `
+
+        let avg_per_score = employees.reduce((count, val) => {
+            let dept = count.find((x) => x.department == val.department);
+            if (dept) {
+                dept.total += val.performance
+                dept.count += 1
+            }
+            else {
+                count.push({
+                    department: val.department,
+                    // performance : val.performance,
+                    total: val.performance,
+                    count: 1
+                })
+            }
+            return count
+        }, [])
+        console.log(avg_per_score)
+
+        let avg_per_score1 = avg_per_score.map((val, ind, arr) => ({
+            department: val.department,
+            AveragePerformance: val.total / val.count
+        }))
+        // console.log(avg_per_score1)
+        // output.innerHTML += `
+        // <h3> Average Perfomance Score </h3><br>
+        // ${avg_per_score1.map(val => `
+        //     Department : ${val.department}<br>
+        //     Average Performance : ${val.AveragePerformance}<br><br>
+        // `).join("")}`
+        let score_60 = employees.filter((val, ind, arr) => val.performance <= 60).map((val, ind, arr) => val.department)
+        // console.log(score_60)
+        // output.innerHTML += `
+        // <h3> Department with perfomance score atleast one 60 </h3><br>
+        // ${score_60.join(",")}`
+        let dept_report = avg_per_score1.map((val) => {
+
+            let count = emp_count_dept[val.department];
+            let salary = salary_of_dept.find(
+                (x) => x.department == val.department
+            );
+
+            return {
+                department: val.department,
+                employeeCount: count,
+                totalPayroll: salary.salary,
+                averagePerformance: val.AveragePerformance
+            };
+        });
+        // console.log(dept_report);
+        // output.innerHTML += `
+        // <h3> Department wise report </h3><br>
+        // ${dept_report.map(val => `
+        //     Department : ${val.department}<br>
+        //     Employee Count : ${val.employeeCount}<br>
+        //     Total Payroll : ${val.totalPayroll}<br>
+        //     Average Performance : ${val.averagePerformance}<br><br>
+        // `).join("")}`
+
+        let all_skill = employees.reduce((arr, val) => {
+            return [...arr, ...val.skills]
+        }, [])
+        console.log(all_skill)
+        let unique_skill = [... new Set(all_skill)]
+        console.log(unique_skill)
+        let iden_python = all_skill.includes("Python")
+        console.log(iden_python)
+        let sql_index = unique_skill.indexOf("SQL")
+        console.log(sql_index)
+        employees.push({
+            id: 113,
+            name: "Rahul",
+            department: "IT",
+            salary: 70000,
+            performance: 88,
+            experience: 4,
+            active: true,
+            skills: ["Java", "JavaScript"]
+        });
+        console.log(employees);
+        employees.pop()
+        console.log(employees)
+
+        let eligible_emp = employees
+            .filter((val) => val.active == true && val.performance >= 80);
+        let sorted_emp = [...eligible_emp]
+            .sort((a, b) => b.salary - a.salary);
+        let bonus_report1 = sorted_emp.map((val) => {
+            let bonus_per;
+            if (val.performance >= 95) {
+                bonus_per = 15;
+            }
+            else {
+                bonus_per = 10;
+            }
+            let bonus_amount = val.salary * bonus_per / 100;
+            let final_salary = val.salary + bonus_amount;
+            return {
+                ID: val.id,
+                Name: val.name,
+                Department: val.department,
+                Salary: val.salary,
+                BonusPercentage: bonus_per,
+                BonusAmount: bonus_amount,
+                FinalSalary: final_salary
+            };
+        });
+        console.log(bonus_report1);
+        let total_employee = employees.length
+        let active_employee = active_emp.length
+        let unactive_employee = employees.filter((val, ind, arr) => val.active == false).length
+        let low_paid = employees.map((val, ind, arr) => val.salary).sort((a, b) => b - a)[employees.length - 1]
+        let low_paid_emp = employees.find((val, ind, arr) => val.salary == low_paid)
+        let performance_improvement = employees.filter((val) => val.performance < 60).length
+        let unique_skill_count = [... new Set(all_skill)].length
+        console.log(unique_skill_count)
+        let final_report = {
+            EmployeeCount: total_employee,
+            ActiveEmployeeCount: active_employee,
+            UnactiveEmployeeCount: unactive_employee,
+            MonthlySalary: total_sal,
+            TotalActiveSalary: annual_act,
+            AverageSalary: average_all,
+            HighestPaidEmployee: highest_paid_emp,
+            LowestPaidEmployee: low_paid_emp,
+            TopThreePerformers: top_three,
+            DepartmentWisePayroll: salary_of_dept,
+            TotalBonusExpenditure: tot_bonus,
+            EmployeeRequiringPerformance: performance_improvement,
+            UniqueSkillCount: unique_skill_count,
+            FinalBonusReport: bonus_report1
+
+        }
+        output.innerHTML = `
+<h2>Executive Report</h2>
+<table class="report-table">
+    <div class = "employee-count">
+        <tr>
+            <th>EmployeeCount :</th>
+            <td> ${final_report.EmployeeCount}<br></td>
+        </tr>
+    </div>
+    <div class = "active-employee-count">
+        <tr>
+            <th>ActiveEmployeeCount :</th>
+            <td> ${final_report.ActiveEmployeeCount}<br></td>
+        </tr>
+    </div>
+    <div class = "unactive-employee-count">
+        <tr>
+            <th>UnactiveEmployeeCount :</th>
+            <td> ${final_report.UnactiveEmployeeCount}<br></td>
+        </tr>
+    </div>
+    <div class = "monthly-salary">
+        <tr>
+            <th>MonthlySalary :</th>
+            <td>${final_report.MonthlySalary}<br></td>
+        </tr>
+    </div>
+    <div class = "total-active-salary">
+        <tr>
+            <th>TotalActiveSalary :</th>
+            <td>${final_report.TotalActiveSalary}<br></td>
+        </tr>
+    </div>
+    <div class = "average-salary">
+        <tr>
+            <th>AverageSalary :</th >
+            <td> ${final_report.AverageSalary}<br></td>
+        </tr>
+    </div>
+    <div class = "highest-paid-employee">
+        <tr>
+            <th>
+                HighestPaidEmployee:</th>
+            <td>
+                ID: ${final_report.HighestPaidEmployee.id}<br>
+                Name: ${final_report.HighestPaidEmployee.name}<br>
+                Department: ${final_report.HighestPaidEmployee.department}<br>
+                Salary: ₹${final_report.HighestPaidEmployee.salary}<br></td>
+        </tr>
+    </div>
+    <div class = "lowest-paid-employee">
+        <tr>
+            <th>
+                LowestPaidEmployee :</th>
+            <td>
+                ID: ${final_report.LowestPaidEmployee.id}<br>
+                Name: ${final_report.LowestPaidEmployee.name}<br>
+                Department: ${final_report.LowestPaidEmployee.department}<br>
+                Salary: ₹${final_report.LowestPaidEmployee.salary}<br>
+            </td>
+        </tr>
+    </div>
+    <div class = "top-three-performers">
+        <tr>
+            <th>
+                TopThreePerformers :</th>
+        </tr>
+        <br> ${final_report.TopThreePerformers.map((val, ind) => `
+            <td>
+                ${ind + 1}. Name: ${val.name}<br>
+                Performance: ${val.performance}<br>
+                Department: ${val.department}<br>
+                Salary: ₹${val.salary}<br>
+            </td>
+        
+        `).join("")}
+        </tr>
+    </div>
+    <div class = "department-wise-payroll">
+        <tr>
+            <th>
+                DepartmentWisePayroll : </th>
+                <tr>
+            <td>Department</td>
+            <td> Payroll</td>
+        </tr>
+        </tr>${final_report.DepartmentWisePayroll.map((val) => `
+        
+        <tr>
+            <td>
+                 ${val.department}</td>
+            <td> ₹${val.salary}</td>
+        </tr>
+        `).join("")}
+    </div>
+    <div class = "bonus-report">
+        <tr>
+            <th>TotalBonusExpenditure :</th>
+            <td>${final_report.TotalBonusExpenditure}</td><br>
+        </tr>
+        <tr>
+            <th> EmployeeRequiringPerformance : </th>
+            <td>${final_report.EmployeeRequiringPerformance}</td>
+        </tr>
+        <tr>
+            <th>UniqueSkillCount : </th>
+            <td>${final_report.UniqueSkillCount}</td>
+        </tr>
+    </div>
+    <div class = "final-bonus-report">
+        <tr>
+            <th>Final Bonus report</th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Bonus %</th>
+            <th>Bonus Amount</th>
+            <th>Final Salary</th>
+        </tr>
+
+        ${final_report.FinalBonusReport.map((val) => `
+        <tr>
+            <td>${val.ID}</td>
+            <td>${val.Name}</td>
+            <td>${val.Department}</td>
+            <td>₹${val.Salary}</td>
+            <td>${val.BonusPercentage}%</td>
+            <td>₹${val.BonusAmount}</td>
+            <td>₹${val.FinalSalary}</td>
+        </tr>
+        `).join("")}
+    </div>
+</table>
+`
+    </script>
+    </script>
+    <!-- <script>
+        let d = {}
+        let it_count = 0
+        let performanceScore = 0
+        employees.forEach((val, ind, arr) => {
+            if (d[val.department] == undefined) {
+                d[val.department] = []
+            }
+            d[val.department].push(val.performance)
+        })
+        let averages = {}
+        for (const dept in d) {
+            const scores = d[dept];
+            const total = scores.reduce((sum, score) => sum + score, 0);
+            averages[dept] = (total / scores.length);
+        }
+        // let avg = d.reduce((count, arr) => {
+        //     console.log(arr.department)
+        // })
+        console.log(averages)
+
+
+    </script> -->
+</body>
+
+</html>
