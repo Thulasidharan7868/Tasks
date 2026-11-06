@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SriMeenakshiConstruction - Billing</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px;
+    background: #edf1f5;
+    font-family: Arial, sans-serif;
+    color: #263238;
+}
+
+.toolbar {
+    max-width: 900px;
+    margin: auto;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add {
+    background: #b96b2c;
+    color: white;
+}
+
+.print {
+    background: #176b87;
+    color: white;
+}
+
+.invoice {
+    max-width: 900px;
+    margin: auto;
+    padding: 35px;
+    background: white;
+    border-top: 6px solid #243f5b;
+    box-shadow: 0 4px 20px #0001;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.company h1 {
+    color: #243f5b;
+    margin: 0 0 12px;
+    font-size: 27px;
+}
+
+.company textarea {
+    width: 100%;
+    height: 90px;
+    resize: none;
+}
+
+input, textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.invoice-info {
+    text-align: right;
+    min-width: 220px;
+}
+
+.invoice-info input {
+    width: 135px;
+}
+
+h3 {
+    color: #243f5b;
+    border-bottom: 2px solid #7d9bb5;
+    padding-bottom: 8px;
+    margin-top: 30px;
+}
+
+.customer {
+    width: 50%;
+}
+
+.customer input,
+.customer textarea {
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.customer textarea {
+    height: 75px;
+    resize: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+th {
+    background: #b96b2c;
+    color: white;
+    padding: 12px 8px;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 7px;
+}
+
+td input {
+    width: 100%;
+    border: none;
+}
+
+td:nth-child(n+2) {
+    text-align: right;
+}
+
+.amount {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.notes {
+    width: 50%;
+}
+
+.notes textarea {
+    width: 100%;
+    height: 85px;
+}
+
+.total-box {
+    width: 300px;
+    background: #e9f3f7;
+    padding: 15px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.total-row input {
+    width: 80px;
+}
+
+.grand {
+    border-top: 1px solid #aaa;
+    font-size: 19px;
+    font-weight: bold;
+    color: #176b87;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #66757d;
+}
+
+@media(max-width:600px) {
+    body { padding: 8px; }
+    .invoice { padding: 15px; }
+    .header, .bottom { flex-direction: column; }
+    .invoice-info { text-align: left; }
+    .customer, .notes, .total-box { width: 100%; }
+    table { font-size: 11px; }
+    th, td { padding: 5px 3px; }
+}
+
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+    body {
+        padding: 0;
+        background: white;
+    }
+
+    .toolbar, .remove-column {
+        display: none !important;
+    }
+
+    .invoice {
+        box-shadow: none;
+        padding: 15px;
+    }
+
+    input, textarea {
+        border: none;
+        background: transparent;
+    }
+
+    th, .total-box {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="toolbar">
+    <button class="add" onclick="addProduct()">
+        + Add Product
+    </button>
+
+    <button class="print" onclick="window.print()">
+        Print Bill
+    </button>
+</div>
+
+<div class="invoice">
+
+    <!-- COMPANY HEADER -->
+
+    <div class="header">
+
+        <div class="company">
+
+            <h1>SriMeenakshiConstruction</h1>
+
+            <textarea placeholder="Company address, phone and email"></textarea>
+
+        </div>
+
+        <div class="invoice-info">
+
+            <h2>TAX INVOICE</h2>
+
+            <p>Invoice No:
+                <input id="invoiceNo" value="SMC-001">
+            </p>
+
+            <p>Date:
+                <input type="date" id="billDate">
+            </p>
+
+            <p>Due Date:
+                <input type="date" id="dueDate">
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CUSTOMER -->
+
+    <h3>Bill To</h3>
+
+    <div class="customer">
+
+        <input placeholder="Customer Name">
+
+        <textarea placeholder="Customer Address"></textarea>
+
+        <input placeholder="Customer Phone Number">
+
+    </div>
+
+    <!-- PRODUCTS -->
+
+    <h3>Product Details</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price (₹)</th>
+                <th>Total Price (₹)</th>
+                <th class="remove-column"></th>
+            </tr>
+        </thead>
+
+        <tbody id="productTable">
+
+            <tr>
+                <td>
+                    <input class="product"
+                    value="Cement Bag">
+                </td>
+
+                <td>
+                    <input class="qty" type="number"
+                    value="10" min="0" oninput="calculate()">
+                </td>
+
+                <td>
+                    <input class="price" type="number"
+                    value="450" min="0" oninput="calculate()">
+                </td>
+
+                <td class="amount">₹4,500.00</td>
+
+                <td class="remove-column">
+                    <button onclick="removeProduct(this)">X</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input class="product"
+                    value="Steel Rod">
+                </td>
+
+                <td>
+                    <input class="qty" type="number"
+                    value="5" min="0" oninput="calculate()">
+                </td>
+
+                <td>
+                    <input class="price" type="number"
+                    value="600" min="0" oninput="calculate()">
+                </td>
+
+                <td class="amount">₹3,000.00</td>
+
+                <td class="remove-column">
+                    <button onclick="removeProduct(this)">X</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input class="product"
+                    value="Sand">
+                </td>
+
+                <td>
+                    <input class="qty" type="number"
+                    value="2" min="0" oninput="calculate()">
+                </td>
+
+                <td>
+                    <input class="price" type="number"
+                    value="1500" min="0" oninput="calculate()">
+                </td>
+
+                <td class="amount">₹3,000.00</td>
+
+                <td class="remove-column">
+                    <button onclick="removeProduct(this)">X</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- TOTAL -->
+
+    <div class="bottom">
+
+        <div class="notes">
+
+            <h3>Payment Details</h3>
+
+            <textarea placeholder="Bank details or payment information"></textarea>
+
+        </div>
+
+        <div class="total-box">
+
+            <div class="total-row">
+                <span>Subtotal</span>
+                <strong id="subtotal">₹10,500.00</strong>
+            </div>
+
+            <div class="total-row">
+                <span>GST (%)</span>
+                <input type="number" id="gst"
+                value="0" min="0" oninput="calculate()">
+            </div>
+
+            <div class="total-row">
+                <span>GST Amount</span>
+                <strong id="gstAmount">₹0.00</strong>
+            </div>
+
+            <div class="total-row grand">
+                <span>Grand Total</span>
+                <span id="grandTotal">₹10,500.00</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your business!</p>
+        <p>SriMeenakshiConstruction</p>
+    </div>
+
+</div>
+
+<script>
+
+// CURRENCY FORMAT
+
+function money(value) {
+
+    return "₹" + value.toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+}
+
+// ADD PRODUCT
+
+function addProduct() {
+
+    let table = document.getElementById("productTable");
+
+    let row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>
+            <input class="product"
+            placeholder="Product Name">
+        </td>
+
+        <td>
+            <input class="qty" type="number"
+            value="1" min="0" oninput="calculate()">
+        </td>
+
+        <td>
+            <input class="price" type="number"
+            value="0" min="0" oninput="calculate()">
+        </td>
+
+        <td class="amount">₹0.00</td>
+
+        <td class="remove-column">
+            <button onclick="removeProduct(this)">X</button>
+        </td>
+    `;
+
+    table.appendChild(row);
+
+    calculate();
+
+}
+
+// REMOVE PRODUCT
+
+function removeProduct(button) {
+
+    button.closest("tr").remove();
+
+    calculate();
+
+}
+
+// CALCULATE BILL
+
+function calculate() {
+
+    let rows = document.querySelectorAll("#productTable tr");
+
+    let subtotal = 0;
+
+    rows.forEach(row => {
+
+        let qty = Number(row.querySelector(".qty").value) || 0;
+
+        let price = Number(row.querySelector(".price").value) || 0;
+
+        let total = qty * price;
+
+        row.querySelector(".amount").innerText = money(total);
+
+        subtotal += total;
+
+    });
+
+    let gstRate = Number(document.getElementById("gst").value) || 0;
+
+    let gstAmount = subtotal * gstRate / 100;
+
+    let grandTotal = subtotal + gstAmount;
+
+    document.getElementById("subtotal").innerText = money(subtotal);
+
+    document.getElementById("gstAmount").innerText = money(gstAmount);
+
+    document.getElementById("grandTotal").innerText = money(grandTotal);
+
+}
+
+// SET DATE
+
+function setDates() {
+
+    let today = new Date();
+
+    let due = new Date();
+
+    due.setDate(today.getDate() + 7);
+
+    function formatDate(date) {
+
+        let year = date.getFullYear();
+
+        let month = String(date.getMonth() + 1).padStart(2, "0");
+
+        let day = String(date.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+
+    }
+
+    document.getElementById("billDate").value = formatDate(today);
+
+    document.getElementById("dueDate").value = formatDate(due);
+
+}
+
+// INITIALIZE
+
+setDates();
+
+calculate();
+
+</script>
+
+</body>
+</html>
