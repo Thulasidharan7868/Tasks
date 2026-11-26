@@ -1,0 +1,154 @@
+
+.contact {
+    width: 100%;
+    min-height: 50vh;
+    padding: 60px 8%;
+    background: var(--primary);
+}
+
+.contact .section-title {
+    color: white;
+}
+
+.contact .section-title::after {
+    background: #b8a5ff;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.con-tact {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-icon {
+    min-width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-size: 30px;
+}
+
+.contact-content {
+    min-width: 0;
+    color: white;
+}
+
+.contact-content h2 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.contact-content p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.contact-email {
+    display: inline-block;
+    color: #b8ffe6;
+    margin-top: 15px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.contact-email:hover {
+    text-decoration: underline;
+}
+
+.conc-form {
+    width: 50%;
+}
+
+.conc-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.conc-form input,
+.conc-form textarea {
+    width: 100%;
+    min-width: 0;
+    background: #6945bc;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 14px 15px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.conc-form input::placeholder,
+.conc-form textarea::placeholder {
+    color: #eee;
+}
+
+.conc-form input:focus,
+.conc-form textarea:focus {
+    border-color: white;
+    background: #5e3aa7;
+}
+
+.conc-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.btn-sub {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #4538e8;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-sub:hover {
+    background: #3828bc;
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 850px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .con-tact,
+    .conc-form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .con-tact {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}

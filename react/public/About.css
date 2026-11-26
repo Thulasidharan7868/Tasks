@@ -1,0 +1,97 @@
+
+.about {
+    width: 100%;
+    min-height: 65vh;
+    padding: 70px 8%;
+    background: white;
+}
+
+.about-box {
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.abtcon {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.abtcon1 {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abtcon2 {
+    width: 65%;
+}
+
+.human {
+    width: 130px;
+    max-width: 100%;
+    color: var(--primary);
+}
+
+.thulasi {
+    font-size: 19px;
+    line-height: 1.9;
+    color: var(--primary);
+}
+
+.abtbd {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    background: var(--background);
+    color: var(--primary);
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    box-shadow: 0 5px 20px rgba(32, 8, 100, 0.08);
+}
+
+.abtbd a {
+    color: var(--primary);
+}
+
+.abtbd a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+    .about-box {
+        flex-direction: column;
+    }
+
+    .abtcon,
+    .abtbd {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .abtcon {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .abtcon1,
+    .abtcon2 {
+        width: 100%;
+    }
+
+    .abtbd {
+        font-size: 15px;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,136 @@
+
+.personal {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 8% 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.personal .content {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: fadeUp 0.8s ease;
+}
+
+.personal .image {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 1.2s ease;
+}
+
+.profile-image {
+    width: 320px;
+    height: 320px;
+    border: 6px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 35px rgba(32, 8, 100, 0.25);
+    transition: 0.4s;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.personal .per {
+    font-size: 30px;
+}
+
+.personal .name {
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 700;
+    margin: 10px 0;
+    color: var(--primary);
+}
+
+.personal .role {
+    font-size: 30px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.personal .desc {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.personal .button {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.personal .btn1,
+.personal .btn2 {
+    min-width: 160px;
+    min-height: 45px;
+    padding: 12px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary);
+    color: white;
+    border-radius: 25px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.personal .btn2 {
+    background: var(--primary);
+}
+
+.personal .btn1:hover,
+.personal .btn2:hover {
+    background: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(32, 8, 100, 0.2);
+}
+
+@media screen and (max-width: 900px) {
+    .profile-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .personal .role {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .personal {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding: 110px 6% 50px;
+    }
+
+    .personal .content,
+    .personal .image {
+        width: 100%;
+        align-items: center;
+    }
+
+    .profile-image {
+        width: 220px;
+        height: 220px;
+    }
+
+    .personal .button {
+        justify-content: center;
+    }
+
+    .personal .desc {
+        font-size: 16px;
+    }
+}
